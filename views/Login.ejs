@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+<div class="container-fluid login">
+    <div class="row jus">
+        <div class="col"></div>
+        <div class="col-sm-12 col-lg-5 col-xl-4 login-form">
+            <div>
+                <div class="row">
+                    <div class="col"></div>
+                    <img class="col-6" src="images/logo_ig.png">
+                    <div class="col"></div>
+                </div>
+                <br>
+                <br>
+                <form  name="form1" action="Login" method="post">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-10">
+                            <input type="radio" class="btn-check" name="Personne" id="Etudiant" value="Etudiant"
+                                   autocomplete="off" checked>
+                            <label class="btn btn-prim" for="Etudiant">Étudiant</label>
+                            <input type="radio" class="btn-check" name="Personne" id="Professeur" value="Professeur"
+                                   autocomplete="off">
+                            <label class="btn btn-prim" for="Professeur">Professeur</label>
+                            <input type="radio" class="btn-check" name="Personne" id="Administrateur" value="Administrateur"
+                                   autocomplete="off">
+                            <label class="btn btn-prim" for="Administrateur">Administrateur</label>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input id="id" class="form-control" type="text" name="ID" size="30" maxlength="50"
+                               placeholder="Votre ID"/>
+                        <label for="id">Votre ID</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input id="password" class="form-control" type="password" name="motDePasse" size="30"
+                               maxlength="50" placeholder="Mot de passe"/>
+                        <label for="password">Mot de passe</label>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-4">
+                            <input class="btn btn-prim" type="submit" name="b_submit" value="Connexion"/>
+                        </div>
+                    </div>
+                </form>
+                <br><br><br>
+                <a href="/inscription">Inscription étudiant</a>
+                <a href="/inscriptionprofesseur">Inscription professeur </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<%- include('./partials/head'); %>
+</head>
+<body>
+
+<%- include('./partials/header'); %>
+
+<script>
+    ////////////////////////////////////////////////////////
+    //////// fonction pour présenter les types d'équipements
+    ////////////////////////////////////////////////////////
+</script>
+</head>
+
+<body>
+<div class="container">
+<h1>Comptoir de prêt</h1>
+<h2>Liste de type d'équipment</h2>
+<div class="row">
+    <div class="col-8">
+        <table class="table table-condensed">
+            <thead class="table-light">
+                <tr class="d-flex">
+                    <th class="col-3 col-sm-10">Nom de la catégorie d'objet</th>
+                    <th class="col-3 col-sm-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% typesEquipements.forEach(function (typeEquipement){%>
+                    <tr  class="d-flex">
+                        <td  class="col-3 col-sm-10">
+                            <%= typeEquipement.TYPE%>
+                        </td>
+                        <td class="col-3 col-sm-2">
+                                <button class="btn btn-outline-danger" onclick="$('#delete_type_<%=typeEquipement.TYPEID%>').modal('show')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                <%});%>
+            </tbody>
+        </table>
+    </div>
+</div>
+<% typesEquipements.forEach(function (typeEquipement){%> 
+    <div class="modal fade" tabindex="-1" role="dialog" id="delete_type_<%=typeEquipement.TYPEID%>">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Supprimer Type : <%=typeEquipement.TYPE%> </h4>
+            </div>
+            <div class="modal-body">
+                <form action="SupprimerType" method="post">
+                    <input type="hidden" name="radioType" value="<%=typeEquipement.TYPEID%>" >
+                    <input type="hidden" name="b_submit" value="delete" >
+                    <div class="d-flex">
+                        <div class="col-4 col-sm-4"></div>
+                        <div class="col-4 col-sm-4">
+                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Annuler</button>
+                        </div>
+                        <div class="col-4 col-sm-4">
+                            <input type="submit" class="btn btn-danger" value="Supprimer"/>
+                        </div>
+                </form> 
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+        </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <%});%>  
+</div>
+
+</body>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./partials/head'); %>
+    </head>
+<body>
+<%- include('./partials/header_professeur'); %>
+<div class="container">
+    <h1>Comptoir de prêt</h1>
+    <h2>Liste d'emprunts</h2>
+    <form action="ListeEmprunt" method="get">
+        <div class="mb-3 row">
+            <label for="Description" class="col-sm-2 col-form-label">Type de recherche:</label>
+            <div class="col-sm-6">
+                <select id="recherche" class="form-control" name="recherche">
+                    <option value="Etudiants.NOM LIKE ">Nom de l'étudiant</option>
+                    <option value="STUDENTID = ">Numéro d'admission</option>
+                    <option value="asNom LIKE ">Nom du professeur demandé</option>
+                    <option value="apNom LIKE ">Nom du professeur qui a confirmé</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label" for="statuDeDemande">Recherche selon le status:</label>
+            <div class="col-sm-6">
+                <select id="statuDeDemande" class="form-control" name="statuDeDemande">
+                    <option value=">=0" selected>Tous les statuts</option>
+                    <option value="=0">Non Approuvé</option>
+                    <option value="=1">Approuvé par professeur</option>
+                    <option value="=2">Approuvé par Admin</option>
+                    <option value="=3">En cours</option>
+                    <option value="=4">Emprunt retourné</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-2 col-form-label" for="statuDeDemande">Recherche par identifiant:</label>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" name="identifiant" size="30" maxlength="500" placeholder="ID etudiant"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="submit" class="btn btn-primary" value="Envoyer"/>
+            </div>
+        </div>
+    
+    </form>
+    <%- include('./partials/listeEmprunt', {permission: permission, emprunts: emprunts }); %>
+</div>
+</body>
+</html>

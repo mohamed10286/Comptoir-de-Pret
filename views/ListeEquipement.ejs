@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <%- include('./partials/head'); %>
+    <script>
+
+        var itemAjouter;
+        var ItemClass;
+        ////////////////////////////////////////////////////////
+        //////// fonction pour ajouter equipement
+        ////////////////////////////////////////////////////////
+        function add_item_type(ItemType) {
+            document.getElementById("ListeEquipement").innerHTML +=
+                "<h4>" + " Catégorie d'équipement: " + ItemType + "</h4>";
+        }
+        ////////////////////////////////////////////////////////
+        //////// fonction pour présenter liste d'equipements
+        ////////////////////////////////////////////////////////
+        function add_item(id, desc, quantite) {
+            itemAjouter ="<div style='margin: 10px; width:500px; border-radius: 15px; border: solid 4px #191F6D; display: flex; flex-direction:row; background-color: #D4DEF5;'>" +
+                "<div style='height: 30px; width:20%;'><div>" +
+                "<br /><input id=c" +
+                id +
+                " type='radio' name='radioEquip' value='" +
+                id +
+                "' />" +
+                "</div>" +
+                "</div>" +
+                "<div style='background-color: #D4DEF5; border-radius: 15px; width:80%;'>" +
+                "<div>" +
+                "<label for=c" +
+                id +
+                "> " +
+                "Nom de l'item: " +
+                desc +
+                "<br> Quantité: " +
+                quantite +
+                " <br />";
+
+            ItemClass = "";
+        }
+        function add_item_class(item_class) {
+            ItemClass +=;
+        }
+        ////////////////////////////////////////////////////////
+        //////// fonction pour fermer liste
+        ////////////////////////////////////////////////////////
+        function endItem(){
+            document.getElementById("ListeEquipement").innerHTML += itemAjouter + ItemClass + "";
+        }
+    </script>
+</head>
+
+<body>
+
+<%- include('./partials/header'); %>
+<div class="container">
+    <h1>Comptoir de prêt</h1>
+    <h2>Liste Équipements</h2>
+    <% typesEquipements.forEach(function (typeEquipement){%>
+        <h2><%=typeEquipement.TYPE%></h2>            
+        <table class="table table-condensed">
+        <thead class="table-light">
+            <tr class="d-flex">
+                <th class="col-3 col-sm-6">Nom de l'item</th>
+                <th class="col-3 col-sm-1">Quantité</th>
+                <th class="col-3 col-sm-3">Programme</th>
+                <th class="col-3 col-sm-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% equipements.forEach(function (equipement){%> 
+                <%if (typeEquipement.TYPEID === equipement.TYPEID){%>
+                    <tr class="d-flex">
+                        <td class="col-3 col-sm-6"><%=equipement.DESCRIPTION%></td>
+                        <td class="col-3 col-sm-1"><%=equipement.QUANTITE%></td>
+                        <td class="col-3 col-sm-3">
+                            <% programmes.forEach(function (programme){%>
+                                <%if (equipement.EQUIPMENTID === programme.EQUIPMENTID) {%>
+                                    <p> <%=programme.NAME%></p>
+                                <%}%>
+                            <%});%>
+                        </td>
+                        <td>
+                            <div class="btn-group-lg">
+                                <form action="equipementChange" method="post" style="display: inline-block">
+                                    <button class="btn btn-outline-danger" type="button" onclick="$('#delete_equipment_<%=equipement.EQUIPMENTID%>').modal('show');" title="Supprimer Equipement"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                </form> 
+                                <form action="equipementChange" method="post" style="display: inline-block">
+                                    <input type="hidden" name="radioEquip" value="<%=equipement.EQUIPMENTID%>" >
+                                    <input type="hidden" name="changement" value="Modifier" >
+                                    <button class="btn btn-outline-primary" type="submit" title="Modifier Equipement"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                <%}%>
+            <%});%>
+        </tbody>
+        </table>
+    <%});%>
+    <% equipements.forEach(function (equipement){%> 
+        <div class="modal fade" tabindex="-1" role="dialog" id="delete_equipment_<%=equipement.EQUIPMENTID%>">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Supprimer l'équipement id: <%=equipement.DESCRIPTION%> </h4>
+                </div>
+                <div class="modal-body">
+                    <form action="equipementChange" method="post">
+                        <input type="hidden" name="radioEquip" value="<%=equipement.EQUIPMENTID%>" >
+                        <input type="hidden" name="changement" value="delete" >
+                        <div class="d-flex">
+                            <div class="col-4 col-sm-4"></div>
+                            <div class="col-4 col-sm-4">
+                                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Annuler</button>
+                            </div>
+                            <div class="col-4 col-sm-4">
+                                <input type="submit" class="btn btn-danger" value="Supprimer"/>
+                            </div>
+
+                        </div>
+                    </form> 
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    <%});%>  
+  </div>
+</body>
+</html>

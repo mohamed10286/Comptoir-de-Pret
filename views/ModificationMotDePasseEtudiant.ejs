@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+
+    <%- include('./partials/header_etudiant'); %>
+        <div class="container">
+            <h1>Système du comptoir de prêt</h1>
+            <h2>Changer votre mot de passe</h2>
+            <form name="form1" action="changerMotDePasse" method="post">
+                <div class="mb-3 row">
+                    <label for="old" class="col-sm-3 col-form-label">Ancien mot de passe:</label>
+                    <div class="col-sm-5">
+                        <input  id="old" class="form-control" type="password" name="ancien" size="30" maxlength="500" />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="new" class="col-sm-3 col-form-label">Nouveau mot de passe:</label>
+                    <div class="col-sm-5">
+                        <input  id="new" class="form-control" type="password" name="nouveau" size="30" maxlength="500" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <input type="submit" class="btn btn-primary" value="Envoyer"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>

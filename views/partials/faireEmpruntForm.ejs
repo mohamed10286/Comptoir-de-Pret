@@ -1,0 +1,51 @@
+<form class="row g-3" action="EmpruntCom" method="post" style="width: 600px;">
+    <div class="col-12">
+        <label for="ClassName" class="form-label">Nom de la classe:</label>
+        <input id="ClassName" class="form-control" type="text" name="ClassName" size="30" maxlength="50" placeholder="Nom de la classe"/>
+    </div>
+    <div class="col-md-6">
+        <label for="BeginDate" class="form-label">Date de d'emprunt:</label>
+        <input id="BeginDate" class="form-control" type="text" name="BeginDate" size="30" maxlength="50"
+        placeholder="aaaa-mm-jj hh:mm" onmouseover="this.type= 'datetime-local'"
+        onmouseout="this.type='text'"/>
+    </div>
+    <div class="col-md-6">
+        <label for="EndDate" class="form-label">Date de retour:</label>
+        <input id="EndDate" class="form-control" type="text" name="EndDate" size="30" maxlength="50"
+        placeholder="aaaa-mm-jj hh:mm" onmouseover="this.type= 'datetime-local'"
+        onmouseout="this.type='text'"/>
+    </div>
+    <div class="col-12">
+        <label for="Professeurs" class="form-label">Professeur:</label>
+        <select id="Professeurs" class="form-control" name="Professeurs">
+            <% professeurs.forEach(function(professeur) { %>
+                <option value="<%= professeur.NPROFESSEUR %>"> <%= professeur.PRENOM +" "+ professeur.NOM %></option>
+            <% }); %>
+        </select>
+    </div>
+    <h2>Équipements:</h2>
+    <% typesEquipements.forEach(function(typeEquiment) { %>
+        <div class="row">
+            <a data-bs-toggle="collapse" href="#equipement<%= typeEquiment.TYPEID %>"><h4><%= typeEquiment.TYPE %></h4></a>
+            <div id="equipement<%= typeEquiment.TYPEID %>" class="collapse">
+                <div class="card card-body">
+                    <% equipements.forEach(function(equipement) { %>
+                        <% if (typeEquiment.TYPEID == equipement.TYPEID) { %>
+                            <div class="row g-3">
+                                <div class="col-md-2">
+                                    <input class='form-control' id="<%= equipement.EQUIPMENTID %>" type='number' name="c_<%= equipement.EQUIPMENTID %>"/>
+                                </div>
+                                <div class="col-md-10">
+                                    <label for="<%=equipement.EQUIPMENTID%>" class="form-label"><%= equipement.DESCRIPTION +" "+ equipement.QUANTITE %></label>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </div>
+</form>

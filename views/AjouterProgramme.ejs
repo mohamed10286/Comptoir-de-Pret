@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <%- include('./partials/head'); %>
+
+</head>
+<%- include('./partials/header'); %>
+
+    <script>
+        function validate_user() {
+            var sn = document.forms["form1"]["nom_programme"].value;
+            if (sn == "") {
+                alert("Nom de programme doit etre ajouter");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <h1>Système de comptoir de prêt</h1>
+    <h2>Ajouter un programme</h2>
+    <form action="prData" method="post" >
+        <div class="mb-3 row">
+            <label for="visitorsn" class="col-sm-3 col-form-label">Nom du programme:</label>
+           <div class="col-sm-5">
+                <input class="form-control" type="text" name="programmeAjouter" size="30" maxlength="500" placeholder="Nom du programme"/>
+           </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="submit" class="btn btn-primary" value="Envoyer"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

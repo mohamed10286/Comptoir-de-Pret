@@ -1,0 +1,74 @@
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align : center;
+    /*margin-top : 20px;*/
+    margin-bottom : 20px;
+    padding-top : 10px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom : 20px;
+}
+
+.divbuttons{
+    text-align: center;
+}
+input{
+    width: 100%;
+}
+.number{
+    width:100px;
+}
+.inputbutton{
+    width: 120px;
+}
+#evaluate {
+    margin: 20px;
+}
+
+#reset {
+    margin: 20px;
+}
+
+#rp {
+ text-align:center
+}
+
+.bouttonFlottant{
+    position: fixed;
+    /* bottom: 50%; */
+    top: 300px;
+    right: 5%;
+}
+li {
+    display: inline;
+  }
+
+.invisible{
+    visibility: hidden;
+}
+
+.login{
+    background: url("/images/login_background.png") no-repeat fixed center top;
+    background-size: cover;
+    height: 100%;
+    min-height: 540px;
+    background-position-x: left;
+}
+
+@media screen and (max-width: 600px){
+    body {
+        margin-top: 0;
+        height: inherit;
+    }
+
+    .login-form{
+        width: 100%;
+        flex: 100%;
+    }
+}

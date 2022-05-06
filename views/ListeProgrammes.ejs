@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+
+    <%- include('./partials/header'); %>
+        <div class="container">
+            <h1>Comptoir de prêt</h1>
+            <h2>Liste des programmes</h2>
+            <div class="row">
+                <div class="col-8">
+                    <table class="table table-condensed">
+                        <thead class="table-light">
+                            <tr class="d-flex">
+                                <th class="col-3 col-sm-10">Nom du programme</th>
+                                <th class="col-3 col-sm-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%programmes.forEach(function (programme){%>
+                                <tr class="d-flex">
+                                    <td class="col-3 col-sm-10">
+                                        <%= programme.NAME%>
+                                    </td>
+                                    <td class="col-3 col-sm-2">
+                                        <button class="btn btn-outline-danger" onclick="$('#delete_programme_<%=programme.IDPROGRAMME%>').modal('show')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <%});%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <% programmes.forEach(function (programme){%> 
+                <div class="modal fade" tabindex="-1" role="dialog" id="delete_programme_<%=programme.IDPROGRAMME%>">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Supprimer le programme: <%=programme.NAME%> </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="SupprimerProgramme" method="post">
+                                    <input type="hidden" name="radioProgramme" value="<%=programme.IDPROGRAMME%>" >
+                                    <div class="d-flex">
+                                        <div class="col-4 col-sm-4"></div>
+                                        <div class="col-4 col-sm-4">
+                                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Annuler</button>
+                                        </div>
+                                        <div class="col-4 col-sm-4">
+                                            <input type="submit" class="btn btn-danger" value="Supprimer"/>
+                                        </div>
+                                    </div>
+                                </form> 
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            <%});%>  
+        </div>
+</body>
+
+</html>

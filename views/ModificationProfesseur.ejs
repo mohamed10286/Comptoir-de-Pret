@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+<%- include('./partials/header'); %>
+<div class="container">
+        <h1>Système du comptoir de prêt</h1>
+        <h2>Modification des données d'un professeur</h2>
+        <form name="form1" action="modifyProfesseur" method="post">
+            <table>
+                <tr>
+                    <td>Numéro d'employé:</td>
+                    <td>
+                        <input id="nProfesseur" type="text" name="nProfesseur" size="30" maxlength="50" readonly value="<%= professeur.NPROFESSEUR%>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nom:</td>
+                    <td>
+                        <input id="Nom" type="text" name="nom" size="30" maxlength="50" value="<%= professeur.NOM%>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prénom:</td>
+                    <td>
+                        <input id="Prenom" type="text" name="prenom" size="30" maxlength="50" value="<%= professeur.PRENOM%>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>
+                        <input id="email" type="text" name="email" size="30" maxlength="30" value="<%= professeur.EMAIL%>">
+                    </td>
+                </tr>
+
+
+
+
+            </table>
+            <div class="divbuttons">
+                <input class="inputbutton" id="evaluate" type="submit" name="b_submit" value="Envoyer" />
+            </div>
+            <p id="rp"></p>
+        </form>
+    </div>
+</body>
+
+</html>

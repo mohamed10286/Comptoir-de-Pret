@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+
+<%- include('./partials/header'); %>
+<div class="container">
+    <h1>Comptoir de prêt</h1>
+    <h2>Liste d'étudiant</h2>
+    <form method="get" action="ListeEtudiant">
+        <div class="mb-3 row">
+            <label for="recherche" class="col-sm-3 col-form-label">Type de recherche:</label>
+            <div class="col-sm-5">
+                <select id="recherche" name="recherche" class="form-control" required>
+                    <option value="" selected>Type de recherche</option>
+                    <option value="NOM LIKE">par nom</option>
+                    <option value="PRENOM LIKE ">par prenom</option>
+                    <option value="NAETUDIANT = ">par numero d'admission</option>
+                    <option value="NAME LIKE ">par Programme</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="identifiant" class="col-sm-3 col-form-label">Identifiant:</label>
+            <div class="col-sm-5">
+                <input id="identifiant" class="form-control" type="text" name="identifiant"  maxlength="50" placeholder="identifiant"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="submit" class="btn btn-primary" value="Envoyer"/>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th>email</th>
+                <th>Numéro de téléphone</th>
+                <th>Programme</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <% etudiants.forEach(function(etudiant) { %>
+                <tr>
+                    <form name="form1" action="etudiantChange" method="post">
+                        <input id="<%= etudiant.NAETUDIANT %>" type='hidden' name='radioStudent'
+                               value="<%= etudiant.NAETUDIANT %>"/>
+                        <td><%= etudiant.NAETUDIANT %></td>
+                        <td><%= etudiant.PRENOM %> <%= etudiant.NOM %></td>
+                        <td><%= etudiant.EMAIL %></td>
+                        <td><%= etudiant.NUMTELEPHONE %></td>
+                        <td><%= etudiant.NAME %></td>
+                        <td><%= etudiant.STATUS %></td>
+                        <td>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select name="changement" class="form-control">
+                                            <option value="delete">supprimer</option>
+                                            <option value="Modifier">modifier</option>
+                                            <option value="Confirmer" selected>Confirmer</option>
+                                            <option value="Modifier mot de passe">Modifier mot de passe</option>
+                                        </select>
+                                        <span class="input-group-btn">
+                                                <input class="inputbutton" type="submit" name="b_submit"
+                                                       value="Envoyer"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </form>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>

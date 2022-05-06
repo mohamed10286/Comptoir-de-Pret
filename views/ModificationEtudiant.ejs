@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./partials/head'); %>
+</head>
+
+<body>
+<%- include('./partials/header'); %>
+
+<div class="container">
+    <h1>Système du comptoir de prêt</h1>
+    <h2>Modifier étudiant</h2>
+    <form name="form1" action="modifyStudent" method="post">
+    <div class="mb-3 row">
+      <label for="nAdmission" class="col-sm-3 col-form-label"> Numéro d'admission:</label>
+      <div class="col-sm-5">
+          <input class="form-control" type="text" name="nAdmission"  value="<%= etudiant.NAETUDIANT%>" size="30" maxlength="500" placeholder="Numéro d'admission" readonly/>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="Nom" class="col-sm-3 col-form-label"> Nom:</label>
+      <div class="col-sm-5">
+          <input class="form-control" type="text" value="<%= etudiant.NOM%>" name="nom" size="30" maxlength="500" placeholder="Nom" />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="Prenom" class="col-sm-3 col-form-label"> Prénom:</label>
+      <div class="col-sm-5">
+          <input id="Prenom" class="form-control" type="text" value="<%= etudiant.PRENOM%>" name="prenom" size="30" maxlength="500" placeholder="Prénom" />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="nTelephone" class="col-sm-3 col-form-label"> Numéro de téléphone:</label>
+      <div class="col-sm-5">
+          <input id="nTelephone" class="form-control" type="text" value="<%= etudiant.NUMTELEPHONE%>" name="nTelephone" size="30" maxlength="500" placeholder="Prénom" />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="email" class="col-sm-3 col-form-label"> Email:</label>
+      <div class="col-sm-5">
+          <input id="email" class="form-control" type="text" value="<%= etudiant.EMAIL%>" name="email" size="30" maxlength="500" placeholder="Email" />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="programmeChoisi" class="col-sm-3 col-form-label"> Programme:</label>
+      <div class="col-sm-5">
+          <select id="programmeChoisi" name="programmeChoisi" class="form-control" >
+            <% programmes.forEach(function (programme){%>
+              <option value="<%= programme.IDPROGRAMME%>" <%= etudiant.ProgramId === programme.IDPROGRAMME? "selected":""%>><%= programme.NAME%></option>
+            <%});%>
+          </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+  </div>
+    </form>
+</div>
+</body>
+</html>

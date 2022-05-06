@@ -1,0 +1,52 @@
+﻿    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <%- include('./partials/head'); %>
+    </head>
+    <body>
+    <%- include('./partials/header'); %>
+    <div class="container">
+        <h1>Bureau de prêt</h1>
+        <h2>Ajouter un équipement</h2>
+        <form name="form1" action="mtData" method="post">
+            <div class="mb-3 row">
+                <label for="Description" class="col-sm-2 col-form-label">Description:</label>
+                <div class="col-sm-6">
+                    <input id="Description" class="form-control" type="text" name="Description" size="50" maxlength="100" placeholder="Nom de l'équipement"/>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="Quantite" class="col-sm-2 col-form-label">Quantité:</label>
+                <div class="col-sm-6">
+                    <input id="Quantite" class="form-control" type="number" name="Quantite" size="30" maxlength="50" placeholder="Quantité" placeholder="Quantite"/>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="TypeEquipement" class="col-sm-2 col-form-label">Type:</label>
+                <div class="col-sm-6">
+                    <select id="TypeEquipement" class="form-control" name="TypeEquipement">
+                        <%typesEquipements.forEach(function (typeEquipement){%>
+                            <option value="<%=typeEquipement.TYPEID%>"><%=typeEquipement.TYPE%></option>
+                        <%});%>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 row">       
+                <label class="col-sm-2 col-form-label">Programme:</label>
+                <div class="col-sm-6">
+                    <%programmes.forEach(function (programme) {%>
+                        <input id="c<%=programme.IDPROGRAMME%>" class="form-control" type='checkbox' name="c_<%=programme.IDPROGRAMME%>">
+                        <label for="c<%=programme.IDPROGRAMME%>"> <%=programme.NAME%></label> <br />
+                    <%});%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <input class="btn btn-primary" type="submit" name="b_submit" value="Sauvegarder"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    </body>
+    </html>

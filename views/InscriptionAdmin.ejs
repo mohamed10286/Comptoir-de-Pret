@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <%- include('./partials/head'); %>
+
+</head>
+<%- include('./partials/header'); %>
+
+<div class="container">
+    <h1>Comptoir de prêt</h1>
+    <h2>Ajouter Administrateur</h2>
+    <form action="adData" method="post">
+        <div class="mb-3 row">
+            <label for="Nom" class="col-sm-3 col-form-label">Numéro d'administrateur:</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="nAdmin" size="30" maxlength="500" placeholder="Numéro Administrateur"/>
+            </div>
+        </div>
+        <div class="mb-3 row">
+                <label for="Nom" class="col-sm-3 col-form-label">Nom:</label>
+            <div class="col-sm-5">
+                    <input class="form-control" type="text" name="nom" size="30" maxlength="500" placeholder="Nom"/>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="Prenom" class="col-sm-3 col-form-label">Prénom:</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="prenom" size="30" maxlength="500" placeholder="Prénom"/>
+            </div>
+        </div>
+         <div class="mb-3 row">
+            <label for="email" class="col-sm-3 col-form-label">Email:</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="email" size="30" maxlength="500" placeholder="example@example.com"/>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="visitorsn" class="col-sm-3 col-form-label">Mot de passe:</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="password" name="motDePasse" size="30" maxlength="500" placeholder="example@example.com"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="submit" class="btn btn-primary" value="Envoyer"/>
+            </div>
+        </div>
+    </form>
+</div>
+</html>

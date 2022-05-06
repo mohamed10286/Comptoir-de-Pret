@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<%- include('./partials/head'); %>
+</head>
+
+<body>
+<%- include('./partials/header'); %>
+
+<div class="container">
+    <h1> Système du comptoir de prêt</h1>
+    <h2>Modification des données d'un Administrateur</h2>
+    <form name="form1" action="modifyAdmin" method="post">
+        <div class="mb-3 row">
+            <label for="nAdmin" class="col-sm-3 col-form-label"> Numéro d'Administrateur:</label>
+            <div class="col-sm-5">
+                <input id="nAdmin" class="form-control" type="text" name="nAdmin"  value="<%=admin.NADMIN%>" size="30" maxlength="500" placeholder="Numéro d'Administrateur" readonly/>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="Nom" class="col-sm-3 col-form-label"> Nom:</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" value="<%=admin.NOM%>" name="nom" size="30" maxlength="500" placeholder="Nom" />
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="Prenom" class="col-sm-3 col-form-label"> Prénom:</label>
+            <div class="col-sm-5">
+                <input id="Prenom" class="form-control" type="text" value="<%=admin.PRENOM%>" name="prenom" size="30" maxlength="500" placeholder="Prénom" />
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="email" class="col-sm-3 col-form-label"> Email:</label>
+            <div class="col-sm-5">
+                <input id="email" class="form-control" type="text" value="<%=admin.EMAIL%>" name="email" size="30" maxlength="500" placeholder="Prénom" />
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

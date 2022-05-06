@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html>
+  <head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+  <%- include('./partials/header_etudiant'); %>
+    <div class="container">
+      <h1>Comptoir d'emprunt</h1>
+      <h2>Faire un emprunt</h2>
+        <%- include('./partials/faireEmpruntForm', {professeurs: professeurs, typesEquipements: typesEquipements, equipements: equipements }); %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+
+<html>
+  <head>
+    <%- include('./partials/head'); %>
+    <script>
+      var emp;
+      var items;
+
+////////////////////////////////////////////////////////
+//////// fonction pour ajouter l'emprunt
+//////////////////////////////////////////////////////// 
+
+      function add_emprunt(
+        id,
+        studentId,
+        professeurDemande,
+        nom,
+        prenom,
+        numero,
+        email,
+        professeurRepondant,
+        admin,
+        status,
+        classname,
+        dateDebut,
+        dateFin,
+        dateEmpruntm,
+        dateDuRetour
+      ) {
+        var statusMessage;
+        if (status == 0) {
+          statusMessage = "Non confirmer";
+        } else if (status == 1) {
+          statusMessage = "Confirmer par professeur";
+        } else if (status == 2) {
+          statusMessage = "Confirmer par Admin";
+        } else if (status == 3) {
+          statusMessage = "Emprunt en cours";
+        } else if (status == 4) {
+          statusMessage = "Emprunt retourner";
+        }
+        items = "";
+////////////////////////////////////////////////////////
+//////// variable pour garder la liste des emprunts
+//////////////////////////////////////////////////////// 
+        emp =
+          ("<div style='margin: 10px; width:500px; border-radius: 15px; border: solid 4px #191F6D; display: flex; flex-direction:row; background-color: #D4DEF5;'>" +
+          "<div style='height: 30px; width:20%;'><div>" +
+          "<br /><input id=c" +
+          id +
+          " type='radio' name='radioEmprunt' value='" +
+          id +
+          "' />" +
+          "</div>" +
+          "</div>" +
+          "<div style='background-color: #D4DEF5; border-radius: 15px; width:80%;'>" +
+          "<div>" +
+          "<label for=c" +
+          id +
+          "> id: " +
+          id +
+          "<br> Id de l'Etudiant: " +
+          studentId +
+          "<br> Nom: " +
+          prenom +
+          " " +
+          nom +
+          "<br> email: " +
+          email +
+          "<br>Numéro de téléphone de l'etudiant: " +
+          numero +
+          "<br> Nom du professeur demandé: " +
+          professeurDemande +
+          "<br> Nom du professeur qui à confirmé: " +
+          professeurRepondant +
+          "<br> Nom de l'admin ayant répondu: " +
+          admin +
+          "<br> Status de la demande: " +
+          statusMessage +
+          "<br> Nom du cours: " +
+          classname +
+          "<br> Date prévu de l'emprun: " +
+          dateDebut +
+          "<br> Date prévu de la fin de l'emprunt: " +
+          dateFin +
+          "<br> Date de l'emprunt: " +
+          dateEmpruntm +
+          "<br> Date du retour: " +
+          dateDuRetour
+          ).replace(/null/g, " ");
+     
+        if (status > 1) {
+          document.getElementById("c" + id).disabled = true;
+        }
+      }
+////////////////////////////////////////////////////////
+//////// fonction pour ajouter les items dans l'emprunt
+//////////////////////////////////////////////////////// 
+      function add_emprunt_item(desc, quantite, type) {
+        items +=
+          "<p>" +
+          type +
+          " </br>" +
+          "Équipement: " +
+          desc +
+          " Quantité: " +
+          quantite +
+          "</p>";
+      }
+////////////////////////////////////////////////////////
+//////// fonction pour fermer chaque emprunt
+//////////////////////////////////////////////////////// 
+      function endItem() {
+        document.getElementById("ListeEmprunt").innerHTML +=
+          emp + items + "</label></div></div>";
+      }
+    </script>
+  </head>
+
+  <body>
+    <%- include('./partials/header_professeur'); %>
+    <div class="container">
+      <h1>Comptoir de prêt</h1>
+      <h2>Page d'accueil</h2>
+
+      <form
+        name="form1"
+        onsubmit="return validate_user()"
+        action="empruntChange"
+        method="post"
+      >
+        <table>
+          <tr>
+            <td>Emprunts:</td>
+            <td id="ListeEmprunt"></td>
+          </tr>
+        </table>
+        <div class="bouttonFlottant">
+          <td>Action:</td>
+          <select id="hotel" name="changement">
+            <option value="delete">Supprimer</option>
+            <option value="Confirmer">Confirmer</option>
+            <option value="Modifier" selected>Modifier</option>
+          </select>
+          <input
+            id="evaluate"
+            type="submit"
+            name="b_submit"
+            value="Faire action"
+          />
+        </div>
+        <p id="rp"></p>
+      </form>
+    </div>
+  </body>
+</html>

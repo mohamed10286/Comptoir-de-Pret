@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+<body>
+<div class="main login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-12 col-lg-5 col-xl-4 login-form">
+                <div class="signup-content">
+                    <form class="register-form" id="register-form" name="form1" onsubmit="return validate_user()"
+                          action="stData" method="post">
+                        <h2>Inscription Étudiant</h2>
+                        <div class="form-group">
+                            <label for="nAdmission">Numéro d'admission :</label>
+                            <input id="nAdmission" type="number" name="nAdmission" required/>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="Nom">Nom :</label>
+                                <input type="text" name="nom" id="Nom" required/>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="Prenom">Prénom :</label>
+                                <input type="text" name="prenom" id="Prenom" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="NTelephone">Numéro de téléphone:</label>
+                            <input type="text" name="nTelephone" id="NTelephone" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="programmeChoisi">Programme :</label>
+                            <div class="form-select">
+                                <select name="programmeChoisi" id="programmeChoisi" required>
+                                    <% programmes.forEach(function (programme) {%>
+                                        <option value="<%= programme.IDPROGRAMME%>"> <%= programme.NAME%> </option>
+                                    <%});%>
+                                </select>
+                                <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email :</label>
+                            <input type="email" name="email" id="email" required/>
+                        </div>
+                        <div class="form-floating">
+                            <label for="password">Mot de passe :</label>
+                            <input id="password" class="form-control" type="password" name="motDePasse"
+                                   maxlength="50" required/>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" value="Envoyer" class="submit" name="submit" id="submit"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
